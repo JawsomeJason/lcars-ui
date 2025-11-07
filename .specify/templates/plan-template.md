@@ -17,21 +17,54 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: [e.g., JavaScript ES6+, HTML5, CSS3 or NEEDS CLARIFICATION]
+**Primary Dependencies**: [e.g., Web Components, esbuild, ESLint or NEEDS CLARIFICATION - MUST justify any non-dev dependencies per Constitution Principle IV]
+**Storage**: [if applicable, e.g., localStorage, IndexedDB, files or N/A]
+**Testing**: **NONE** (Constitution forbids testing)
+**Target Platform**: [e.g., Modern browsers (Chrome/Firefox/Safari/Edge latest), specific browser version requirements or NEEDS CLARIFICATION]
+**Project Type**: [web - lcars-ui is a web component library]
+**Performance Goals**: [domain-specific, e.g., component render < 16ms, first paint < 100ms, bundle size or NEEDS CLARIFICATION]
+**Constraints**: [domain-specific, e.g., WCAG 2.1 AA compliance mandatory, keyboard navigation, no framework dependencies or NEEDS CLARIFICATION]
+**Scale/Scope**: [domain-specific, e.g., number of components, component complexity, theming requirements or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-[Gates determined based on constitution file]
+### I. Clean Code
+
+- [ ] Code follows semantic naming and single responsibility principle
+- [ ] No excessive nesting (max 3 levels)
+- [ ] Uses modern JavaScript (ES6+) features appropriately
+- [ ] Self-documenting with "why" comments only
+
+### II. Simple UX
+
+- [ ] Each component has a clear, singular purpose
+- [ ] Component APIs are intuitive with sensible defaults
+- [ ] Follows established UI interaction patterns
+- [ ] Performance targets defined (render time, responsiveness)
+
+### III. Standards & Accessibility-Driven (NON-NEGOTIABLE)
+
+- [ ] Uses semantic HTML5 elements
+- [ ] WCAG 2.1 Level AA compliance plan documented
+- [ ] Keyboard navigation support specified
+- [ ] ARIA labels/roles defined where needed
+- [ ] Focus management strategy documented
+- [ ] Uses Web Components standards correctly
+
+### IV. Minimal Dependencies
+
+- [ ] No framework dependencies (React, Vue, Angular, etc.)
+- [ ] No CSS frameworks (Bootstrap, Tailwind, etc.)
+- [ ] Any build tool dependencies justified and documented
+- [ ] Pure HTML, CSS, JavaScript + Web Components only
+
+### CRITICAL: Testing Policy
+
+- [ ] NO test files created (per Constitution - testing forbidden)
+- [ ] Validation occurs through manual usage and examples only
 
 ## Project Structure
 
@@ -48,57 +81,54 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 <!--
   ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
   for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
+  real paths (e.g., src/components/button, src/styles/themes). The delivered
+  plan must not include Option labels.
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+# Web Component Library Structure (DEFAULT for lcars-ui)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+├── components/           # Web Components
+│   ├── [component-name]/
+│   │   ├── [component-name].js      # Component class
+│   │   ├── [component-name].css     # Component styles
+│   │   └── index.js                 # Export
+│   └── index.js                     # Components barrel export
+├── styles/
+│   ├── variables.css     # CSS custom properties (theming)
+│   ├── base.css          # Base styles, resets
+│   └── utilities.css     # Utility classes (if needed)
+├── utils/
+│   └── helpers.js        # Shared utility functions
+└── index.js              # Library entry point
 
-tests/
-├── contract/
-├── integration/
-└── unit/
+examples/                 # Usage examples (manual validation)
+├── [feature-name]/
+│   ├── index.html
+│   └── demo.js
+└── assets/
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
+docs/
+├── components/           # Component documentation
+│   └── [component-name].md
+└── guides/
+    └── [topic].md
 
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+# NOTE: NO tests/ directory (testing forbidden by Constitution)
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+directories captured above. For lcars-ui, this will be the Web Component Library structure.]
 
 ## Complexity Tracking
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |
