@@ -1,0 +1,26 @@
+/**
+ * LCARS 2357 Theme - Color Palette
+ * Star Trek: The Next Generation era color scheme
+ */
+
+:root {
+  /* 2357 Theme Colors */
+  --lcars-pale-canary: #ffff99;
+  --lcars-golden-tanoi: #ffcc66;
+  --lcars-neon-carrot: #ff9933;
+  --lcars-eggplant: #664466;
+  --lcars-lilac: #cc99cc;
+  --lcars-anakiwa: #99ccff;
+  --lcars-mariner: #3366cc;
+  --lcars-baltic-blue: #006699;
+
+  /* Semantic Color Assignments */
+  --lcars-primary-bg: var(--lcars-golden-tanoi);
+  --lcars-primary-border: var(--lcars-neon-carrot);
+  --lcars-interactive: var(--lcars-mariner);
+  --lcars-interactive-hover: var(--lcars-anakiwa);
+  --lcars-interactive-active: var(--lcars-baltic-blue);
+  --lcars-disabled: var(--lcars-eggplant);
+  --lcars-alert: var(--lcars-pale-canary);
+  --lcars-info: var(--lcars-anakiwa);
+}

@@ -31,14 +31,10 @@ pnpm add lcars-ui
 
 ### Step 1: Import Components
 
-Import the components you need in your JavaScript/TypeScript file:
+Import the library in your JavaScript/TypeScript file:
 
 ```javascript
-// Import specific components
-import "lcars-ui/components/lcars-panel";
-import "lcars-ui/components/lcars-button";
-
-// OR import all components at once
+// Import the library (registers all components)
 import "lcars-ui";
 ```
 

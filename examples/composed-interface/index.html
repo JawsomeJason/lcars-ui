@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LCARS - Complete Interface Composition</title>
+    <style>
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        padding: 2rem;
+        margin: 0;
+      }
+
+      .lcars-interface {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        color: #99ccff;
+        font-size: 2rem;
+        letter-spacing: 0.1em;
+      }
+
+      .lcars-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      lcars-panel {
+        margin-bottom: 1rem;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #0f0;
+        margin-right: 0.5rem;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .info-box {
+        background: #111;
+        padding: 1rem;
+        border: 1px solid #333;
+        border-radius: 4px;
+        margin-top: 2rem;
+      }
+
+      .info-box h2 {
+        color: #99ccff;
+        font-size: 1rem;
+        margin-top: 0;
+      }
+
+      .info-box p {
+        margin: 0.5rem 0;
+        color: #ccc;
+      }
+
+      @media (max-width: 768px) {
+        .lcars-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lcars-interface" data-theme="2357">
+      <h1>USS ENTERPRISE NCC-1701-D</h1>
+
+      <div class="lcars-grid">
+        <!-- Ship Systems Panel -->
+        <lcars-panel label="SHIP STATUS" variant="info">
+          <p>
+            <span class="status-indicator"></span
+            ><strong>Warp Drive:</strong> Online
+          </p>
+          <p>
+            <span class="status-indicator"></span><strong>Shields:</strong> 100%
+          </p>
+          <p>
+            <span class="status-indicator"></span
+            ><strong>Weapons:</strong> Armed
+          </p>
+          <p>
+            <span class="status-indicator"></span
+            ><strong>Life Support:</strong> Nominal
+          </p>
+          <p>
+            <span class="status-indicator"></span
+            ><strong>Computer Core:</strong> Active
+          </p>
+
+          <div class="button-group">
+            <lcars-button id="diagnostics" size="small"
+              >Run Diagnostics</lcars-button
+            >
+            <lcars-button id="refresh" size="small" variant="secondary"
+              >Refresh</lcars-button
+            >
+          </div>
+        </lcars-panel>
+
+        <!-- Navigation Panel -->
+        <lcars-panel label="NAVIGATION">
+          <p><strong>Heading:</strong> 270 Mark 15</p>
+          <p><strong>Speed:</strong> Warp 5</p>
+          <p><strong>Destination:</strong> Sector 001 (Sol System)</p>
+          <p><strong>ETA:</strong> 2 hours, 37 minutes</p>
+          <p><strong>Coordinates:</strong> 45.2° N, 122.6° W</p>
+
+          <div class="button-group">
+            <lcars-button id="plot-course">Plot Course</lcars-button>
+            <lcars-button id="hold-position" variant="secondary"
+              >Hold Position</lcars-button
+            >
+          </div>
+        </lcars-panel>
+      </div>
+
+      <div class="lcars-grid">
+        <!-- Communications Panel -->
+        <lcars-panel label="COMMUNICATIONS" variant="info">
+          <p><strong>Subspace Channels:</strong> Open</p>
+          <p><strong>Universal Translator:</strong> Active</p>
+          <p><strong>Last Contact:</strong> Starfleet Command (2 min ago)</p>
+          <p><strong>Priority Messages:</strong> 3 unread</p>
+
+          <div class="button-group">
+            <lcars-button id="hail-freq">Open Hailing Frequencies</lcars-button>
+            <lcars-button id="view-msgs" variant="secondary"
+              >View Messages</lcars-button
+            >
+          </div>
+        </lcars-panel>
+
+        <!-- Tactical Panel -->
+        <lcars-panel label="TACTICAL">
+          <p><strong>Long Range Sensors:</strong> Active</p>
+          <p><strong>Contacts:</strong> 12 vessels detected</p>
+          <p><strong>Threat Level:</strong> Minimal</p>
+          <p><strong>Shields:</strong> Standby</p>
+          <p><strong>Phasers:</strong> Ready</p>
+          <p><strong>Torpedoes:</strong> 24 loaded</p>
+
+          <div class="button-group">
+            <lcars-button id="scan">Long Range Scan</lcars-button>
+            <lcars-button id="shields-up" variant="secondary"
+              >Raise Shields</lcars-button
+            >
+          </div>
+        </lcars-panel>
+      </div>
+
+      <!-- Alert Panel -->
+      <lcars-panel label="ALERTS" variant="alert">
+        <p><strong>⚠️ Sensor Anomaly Detected</strong></p>
+        <p>Unusual readings from Sector 045. Investigating...</p>
+
+        <div class="button-group">
+          <lcars-button id="investigate">Investigate</lcars-button>
+          <lcars-button id="dismiss" variant="secondary" size="small"
+            >Dismiss</lcars-button
+          >
+        </div>
+      </lcars-panel>
+
+      <!-- Main Controls -->
+      <div
+        class="button-group"
+        style="justify-content: center; margin-top: 2rem"
+      >
+        <lcars-button id="engage" size="large">ENGAGE</lcars-button>
+        <lcars-button id="red-alert" size="large" variant="danger"
+          >RED ALERT</lcars-button
+        >
+        <lcars-button id="all-stop" size="large" variant="secondary"
+          >ALL STOP</lcars-button
+        >
+      </div>
+
+      <div class="info-box">
+        <h2>Complete LCARS Interface Composition</h2>
+        <p>This example demonstrates all LCARS components working together:</p>
+        <ul>
+          <li>
+            <strong>4 lcars-panel components</strong> with different variants
+            (standard, info, alert)
+          </li>
+          <li>
+            <strong>12 lcars-button components</strong> with various sizes and
+            variants
+          </li>
+          <li>Theme inheritance via <code>data-theme="2357"</code></li>
+          <li>Interactive event handling on all buttons</li>
+          <li>Responsive grid layout for different screen sizes</li>
+        </ul>
+        <p><strong>User Story 3:</strong> Build complete LCARS interface ✓</p>
+        <p>
+          Try interacting with the buttons - events will log to the console!
+        </p>
+      </div>
+    </div>
+
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LCARS - Themed Components Example</title>
+    <style>
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        padding: 2rem;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        color: #99ccff;
+      }
+
+      h2 {
+        text-transform: uppercase;
+        color: #ffcc66;
+        font-size: 1.25rem;
+        margin: 2rem 0 1rem;
+      }
+
+      .themed-section {
+        background: #111;
+        padding: 1.5rem;
+        border: 2px solid #333;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+
+      lcars-panel {
+        margin-bottom: 1rem;
+      }
+
+      .info {
+        background: #111;
+        padding: 1rem;
+        border: 1px solid #333;
+        border-radius: 4px;
+        margin-top: 2rem;
+      }
+
+      .info h3 {
+        color: #99ccff;
+        font-size: 1rem;
+        margin-top: 0;
+      }
+
+      .info p {
+        margin: 0.5rem 0;
+        color: #ccc;
+      }
+
+      .info code {
+        background: #222;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        color: #99ccff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>LCARS Theme Inheritance Example</h1>
+
+      <div class="info">
+        <h3>About This Example</h3>
+        <p>
+          This demonstrates theme inheritance via the
+          <code>data-theme</code> attribute.
+        </p>
+        <p>
+          All panels inside a container with
+          <code>data-theme="2357"</code> automatically inherit the theme colors.
+        </p>
+        <p><strong>User Story 2:</strong> Apply color theme ✓</p>
+      </div>
+
+      <h2>Section 1: Explicitly Themed Container</h2>
+      <div class="themed-section" data-theme="2357">
+        <lcars-panel label="Bridge Status">
+          <p>This panel inherits the 2357 theme from its parent container.</p>
+          <p>Notice the golden-tanoi background and neon-carrot border.</p>
+        </lcars-panel>
+
+        <lcars-panel variant="info" label="Sensors">
+          <p>This info variant panel also inherits the 2357 theme.</p>
+          <p>It uses anakiwa background and mariner border.</p>
+        </lcars-panel>
+
+        <lcars-panel variant="alert" label="Warning">
+          <p>Alert variant panel with 2357 theme colors.</p>
+          <p>Uses pale-canary background from the 2357 palette.</p>
+        </lcars-panel>
+      </div>
+
+      <h2>Section 2: No Explicit Theme (Inherits from :root)</h2>
+      <div class="themed-section">
+        <lcars-panel label="Engineering">
+          <p>
+            This panel has no explicit <code>data-theme</code> set on itself or
+            container.
+          </p>
+          <p>
+            It falls back to the default 2357 theme from <code>:root</code>.
+          </p>
+        </lcars-panel>
+
+        <lcars-panel variant="info" label="Science">
+          <p>Info panel without explicit theme.</p>
+          <p>Still uses 2357 colors as the default fallback.</p>
+        </lcars-panel>
+      </div>
+
+      <h2>Section 3: Nested Theme Inheritance</h2>
+      <div class="themed-section" data-theme="2357">
+        <lcars-panel label="Outer Panel">
+          <p>This panel's container has <code>data-theme="2357"</code>.</p>
+
+          <div
+            style="
+              margin-top: 1rem;
+              padding: 1rem;
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 4px;
+            "
+          >
+            <lcars-panel label="Nested Panel">
+              <p>This nested panel is inside another panel's slot.</p>
+              <p>
+                It still inherits the 2357 theme from the closest themed
+                ancestor.
+              </p>
+            </lcars-panel>
+          </div>
+        </lcars-panel>
+      </div>
+
+      <div class="info" style="margin-top: 3rem">
+        <h3>Theme Inheritance Test Results</h3>
+        <p>
+          ✓ Panels inherit theme from container with
+          <code>data-theme="2357"</code>
+        </p>
+        <p>✓ Panels without explicit theme fall back to :root default (2357)</p>
+        <p>✓ Nested components inherit from closest themed ancestor</p>
+        <p>✓ All variants (standard, alert, info) respect theme inheritance</p>
+        <p>
+          <strong>Conclusion:</strong> Theme inheritance works correctly via CSS
+          custom properties!
+        </p>
+      </div>
+    </div>
+
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>

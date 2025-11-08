@@ -1,0 +1,28 @@
+/**
+ * LCARS Theme System
+ * Supports data-theme attribute for theme inheritance
+ */
+
+@import "./variables.css";
+
+/* Default theme at root level */
+:root {
+  /* 2357 theme colors already defined in variables.css */
+}
+
+/* Explicit 2357 theme (same as default) */
+[data-theme="2357"] {
+  /* Inherits from :root - colors already defined */
+}
+
+/*
+ * Theme Inheritance Logic:
+ *
+ * Components will check for data-theme attribute on:
+ * 1. The component itself
+ * 2. The closest parent with [data-theme]
+ * 3. Fall back to :root defaults
+ *
+ * CSS custom properties automatically inherit through Shadow DOM,
+ * so theme colors cascade naturally.
+ */

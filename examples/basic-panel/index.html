@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LCARS Panel - Basic Example</title>
+    <style>
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        padding: 2rem;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        color: #99ccff;
+      }
+
+      lcars-panel {
+        margin-bottom: 1.5rem;
+      }
+
+      .info {
+        background: #111;
+        padding: 1rem;
+        border: 1px solid #333;
+        border-radius: 4px;
+        margin-top: 2rem;
+      }
+
+      .info h2 {
+        color: #99ccff;
+        font-size: 1rem;
+        margin-top: 0;
+      }
+
+      .info p {
+        margin: 0.5rem 0;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>LCARS Panel Component - Basic Example</h1>
+
+      <!-- Standard Panel -->
+      <lcars-panel>
+        <p><strong>Standard Panel</strong></p>
+        <p>This is a basic LCARS panel with default styling.</p>
+        <p>
+          It uses the golden-tanoi background and neon-carrot border from the
+          2357 theme.
+        </p>
+      </lcars-panel>
+
+      <!-- Panel with Label -->
+      <lcars-panel label="System Status">
+        <p><strong>Status:</strong> All systems operational</p>
+        <p><strong>Warp Drive:</strong> Online</p>
+        <p><strong>Shields:</strong> 100%</p>
+      </lcars-panel>
+
+      <!-- Alert Variant -->
+      <lcars-panel variant="alert" label="Warning">
+        <p><strong>⚠️ Alert Status</strong></p>
+        <p>This panel uses the alert variant with pale-canary background.</p>
+      </lcars-panel>
+
+      <!-- Info Variant -->
+      <lcars-panel variant="info" label="Information">
+        <p><strong>ℹ️ Info Panel</strong></p>
+        <p>
+          This panel uses the info variant with anakiwa background and mariner
+          border.
+        </p>
+      </lcars-panel>
+
+      <div class="info">
+        <h2>About This Example</h2>
+        <p>
+          This demonstrates the basic lcars-panel component with different
+          variants.
+        </p>
+        <p>
+          Open your browser's developer tools to inspect the Shadow DOM
+          structure.
+        </p>
+        <p>
+          <strong>User Story 1:</strong> Import and use basic LCARS component ✓
+        </p>
+      </div>
+    </div>
+
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+/**
+ * LCARS Panel Styles
+ * Authentic LCARS visual design with CSS Grid and color blocking
+ */
+
+.panel {
+  display: block;
+  background-color: var(--panel-bg, var(--lcars-golden-tanoi));
+  border: var(--panel-border-width, 4px) solid
+    var(--panel-border, var(--lcars-neon-carrot));
+  border-radius: var(--panel-border-radius, 12px);
+  padding: 0;
+  overflow: hidden;
+}
+
+.panel__header {
+  background-color: var(--panel-header-bg, var(--lcars-neon-carrot));
+  color: var(--panel-header-color, #000);
+  padding: 0.5rem var(--panel-padding, 1rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.panel__content {
+  padding: var(--panel-padding, 1rem);
+  color: #000;
+}
+
+/* Variant: Alert */
+.panel--alert {
+  --panel-bg: var(--lcars-pale-canary);
+  --panel-border: var(--lcars-neon-carrot);
+  --panel-header-bg: var(--lcars-neon-carrot);
+}
+
+/* Variant: Info */
+.panel--info {
+  --panel-bg: var(--lcars-anakiwa);
+  --panel-border: var(--lcars-mariner);
+  --panel-header-bg: var(--lcars-mariner);
+  --panel-header-color: #fff;
+}
+
+.panel--info .panel__content {
+  color: #000;
+}
+
+/* Variant: Standard (default) */
+.panel--standard {
+  /* Uses default CSS custom property values */
+}

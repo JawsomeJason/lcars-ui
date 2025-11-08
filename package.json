@@ -1,0 +1,53 @@
+{
+  "name": "lcars-ui",
+  "version": "0.1.0",
+  "description": "Star Trek LCARS UI component library built with Web Components",
+  "type": "module",
+  "main": "./dist/lcars-ui.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/lcars-ui.js"
+    },
+    "./polyfills": {
+      "default": "./dist/polyfills.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write \"src/**/*.{js,css}\"",
+    "format:check": "prettier --check \"src/**/*.{js,css}\""
+  },
+  "keywords": [
+    "lcars",
+    "star-trek",
+    "web-components",
+    "ui-library",
+    "custom-elements",
+    "shadow-dom"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.19.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "@webcomponents/webcomponentsjs": "^2.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JawsomeJason/lcars-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JawsomeJason/lcars-ui/issues"
+  },
+  "homepage": "https://github.com/JawsomeJason/lcars-ui#readme"
+}
